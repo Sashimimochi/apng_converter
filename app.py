@@ -48,7 +48,7 @@ if "convert" not in st.session_state:
 if "filename" not in st.session_state:
   st.session_state.filename = f"{time.time()}"
 
-OUTPUT_DIR = "tmp"
+OUTPUT_DIR = "/tmp"
 
 def main():
   st.title("Movie to GIF converter")
