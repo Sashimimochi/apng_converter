@@ -7,6 +7,7 @@ from pygifsicle import gifsicle
 
 def convert_video_to_gif(movie, fps=10):
   output_file = os.path.join(OUTPUT_DIR, f"{st.session_state.filename}.gif")
+  print(f"output to {output_file}")
   bytes_data = movie.read()
   input_file = os.path.join(OUTPUT_DIR, movie.name)
   with open(input_file, "wb") as f:
@@ -27,6 +28,8 @@ def convert_video_to_gif(movie, fps=10):
 def optimize_gif(optimize_level: Literal[1, 2, 3]=3):
   input_file = os.path.join(OUTPUT_DIR, f"{st.session_state.filename}.gif")
   output_file = os.path.join(OUTPUT_DIR, f"{st.session_state.filename}_optimized.gif")
+  print(f"input from {input_file}")
+  print(f"output to {output_file}")
   gifsicle(
     sources=input_file,
     destination=output_file,
