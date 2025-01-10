@@ -14,7 +14,7 @@ def convert_video_to_gif(movie, fps=10):
   clip = VideoFileClip(input_file)
   clip.write_gif(output_file, fps=fps)
   os.remove(input_file)
-  st.success("Successflly converted MP4 to GIF")
+  st.success("Successflly converted Movie to GIF")
   st.image(output_file)
   st.download_button(
     label="Download (Original Size)",
@@ -48,10 +48,10 @@ if "convert" not in st.session_state:
 if "filename" not in st.session_state:
   st.session_state.filename = f"{time.time()}"
 
-OUTPUT_DIR = "result" # tmp
+OUTPUT_DIR = "tmp"
 
 def main():
-  st.title("MP4 to GIF converter")
+  st.title("Movie to GIF converter")
   movie = st.file_uploader("upload movie file", type=["mp4", "mov"], accept_multiple_files=False)
   st.video(movie)
 
