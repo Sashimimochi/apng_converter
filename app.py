@@ -46,8 +46,6 @@ def optimize_gif(optimize_level: Literal[1, 2, 3]=3):
     mime="image/gif"
   )
 
-if "convert" not in st.session_state:
-    st.session_state.convert = False
 if "filename" not in st.session_state:
   st.session_state.filename = f"{time.time()}"
 
@@ -60,16 +58,13 @@ def main():
 
   if movie:
     fps = st.slider("select frame rate", min_value=1, max_value=60, value=10)
+    optimized_level = st.selectbox("Select Optimize Level", [1, 2, 3])
     if st.button("convert"):
       with st.spinner("converting..."):
         st.session_state.filename = f"{time.time()}"
         convert_video_to_gif(movie, fps=fps)
-        st.session_state.convert = True
-    if st.session_state.convert:
-      optimized_level = st.selectbox("Select Optimize Level", [1, 2, 3])
-      if st.button("optimize"):
-        with st.spinner("optimizing..."):
-          optimize_gif(optimize_level=optimized_level)
+      with st.spinner("optimizing..."):
+        optimize_gif(optimize_level=optimized_level)
 
 if __name__ == "__main__":
   main()
