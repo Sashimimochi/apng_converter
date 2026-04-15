@@ -1,3 +1,7 @@
-moviepy
-pygifsicle
 streamlit
+moviepy
+imageio
+imageio[ffmpeg]
+Pillow
+numpy
+pygifsicle
